@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relationship Analysis - AI Love Prediction</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="Analyze your relationship compatibility with AI technology">
+</head>
+<body>
+    <header>
+        <h1>AI Love Prediction</h1>
+    </header>
+    
+    <main>
+        <div class="container">
+            <div class="card">
+                <div class="progress-bar">
+                    <div class="step active" id="step-1">Basic Info</div>
+                    <div class="step" id="step-2">Lifestyle</div>
+                    <div class="step" id="step-3">Relationships</div>
+                    <div class="step" id="step-4">Current Status</div>
+                </div>
+                
+                <!-- Form Sections -->
+                <div class="form-section" id="section-1">
+                    <h2>Basic Information</h2>
+                    <form id="basic-info-form">
+                        <div class="form-group">
+                            <label for="age">Age:</label>
+                            <input type="number" id="age" name="age" min="18" max="100" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="gender">Gender:</label>
+                            <select id="gender" name="gender" required>
+                                <option value="">Select</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="non-binary">Non-binary</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="education">Education Level:</label>
+                            <select id="education" name="education" required>
+                                <option value="">Select</option>
+                                <option value="high-school">High School</option>
+                                <option value="college">College</option>
+                                <option value="bachelors">Bachelor's Degree</option>
+                                <option value="masters">Master's Degree</option>
+                                <option value="phd">PhD or Doctorate</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="occupation">Occupation:</label>
+                            <select id="occupation" name="occupation" required>
+                                <option value="">Select</option>
+                                <option value="technology">Technology / IT</option>
+                                <option value="healthcare">Healthcare</option>
+                                <option value="education">Education</option>
+                                <option value="finance">Finance / Banking</option>
+                                <option value="engineering">Engineering</option>
+                                <option value="arts">Arts / Design / Entertainment</option>
+                                <option value="legal">Legal</option>
+                                <option value="business">Business / Management</option>
+                                <option value="sales">Sales / Marketing</option>
+                                <option value="service">Service Industry</option>
+                                <option value="science">Science / Research</option>
+                                <option value="government">Government / Public Service</option>
+                                <option value="student">Student</option>
+                                <option value="entrepreneur">Entrepreneur</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="button-container">
+                            <button type="button" onclick="nextStep(1, 2)" class="button">Next</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="form-section hidden" id="section-2">
+                    <h2>Lifestyle</h2>
+                    <form id="lifestyle-form">
+                        <div class="form-group">
+                            <label for="sleep-pattern">Sleep Pattern:</label>
+                            <select id="sleep-pattern" name="sleep-pattern" required>
+                                <option value="">Select</option>
+                                <option value="early-bird">Early Bird (Sleep before 10PM, Wake before 6AM)</option>
+                                <option value="normal">Normal Schedule (Sleep before 11PM, Wake before 8AM)</option>
+                                <option value="night-owl">Night Owl (Sleep after 12AM, Wake after 8AM)</option>
+                                <option value="irregular">Irregular Schedule</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Dietary Habits (Select all that apply):</label>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="diet-healthy" name="diet" value="healthy">
+                                <label for="diet-healthy">Healthy Eating</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="diet-vegetarian" name="diet" value="vegetarian">
+                                <label for="diet-vegetarian">Vegetarian</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="diet-vegan" name="diet" value="vegan">
+                                <label for="diet-vegan">Vegan</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="diet-fast-food" name="diet" value="fast-food">
+                                <label for="diet-fast-food">Fast Food</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="exercise">Exercise Frequency (1-10):</label>
+                            <input type="range" id="exercise" name="exercise" min="1" max="10" value="5">
+                            <div class="range-labels">
+                                <span>Rarely</span>
+                                <span>Regularly</span>
+                                <span>Very Active</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="social">Social Level (1-10):</label>
+                            <input type="range" id="social" name="social" min="1" max="10" value="5">
+                            <div class="range-labels">
+                                <span>Introvert</span>
+                                <span>Balanced</span>
+                                <span>Extrovert</span>
+                            </div>
+                        </div>
+                        
+                        <div class="button-container">
+                            <button type="button" onclick="prevStep(2, 1)" class="button secondary">Back</button>
+                            <button type="button" onclick="nextStep(2, 3)" class="button">Next</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="form-section hidden" id="section-3">
+                    <h2>Relationship History</h2>
+                    <form id="relationship-form">
+                        <div class="form-group">
+                            <label>Past Relationships (Select all that apply):</label>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="rel-none" name="past-rel" value="none">
+                                <label for="rel-none">Never been in a relationship</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="rel-short" name="past-rel" value="short-term">
+                                <label for="rel-short">Short-term relationships (under 1 year)</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="rel-medium" name="past-rel" value="medium-term">
+                                <label for="rel-medium">Medium-term relationships (1-3 years)</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="rel-long" name="past-rel" value="long-term">
+                                <label for="rel-long">Long-term relationships (3+ years)</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="rel-cohabitation" name="past-rel" value="cohabitation">
+                                <label for="rel-cohabitation">Cohabitation experience</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="rel-marriage" name="past-rel" value="marriage">
+                                <label for="rel-marriage">Marriage experience</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="longest-relationship">Longest Relationship (in months):</label>
+                            <input type="number" id="longest-relationship" name="longest-relationship" min="0">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Common Breakup Reasons (Select all that apply):</label>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="breakup-none" name="breakup" value="none">
+                                <label for="breakup-none">Not applicable</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="breakup-communication" name="breakup" value="communication">
+                                <label for="breakup-communication">Communication issues</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="breakup-incompatible" name="breakup" value="incompatible">
+                                <label for="breakup-incompatible">Incompatible values/goals</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="breakup-trust" name="breakup" value="trust">
+                                <label for="breakup-trust">Trust issues</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="breakup-distance" name="breakup" value="distance">
+                                <label for="breakup-distance">Distance/relocation</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="lessons">Lessons learned from past relationships:</label>
+                            <textarea id="lessons" name="lessons" rows="4"></textarea>
+                        </div>
+                        
+                        <div class="button-container">
+                            <button type="button" onclick="prevStep(3, 2)" class="button secondary">Back</button>
+                            <button type="button" onclick="nextStep(3, 4)" class="button">Next</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="form-section hidden" id="section-4">
+                    <h2>Current Status</h2>
+                    <form id="status-form">
+                        <div class="form-group">
+                            <label for="emotional-state">Current Emotional State:</label>
+                            <select id="emotional-state" name="emotional-state" required>
+                                <option value="">Select</option>
+                                <option value="very-open">Very open to new relationships</option>
+                                <option value="willing">Willing to try if the right person comes along</option>
+                                <option value="cautious">Cautious, taking it slow</option>
+                                <option value="not-interested">Not interested in dating right now</option>
+                                <option value="healing">Healing from previous relationship</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="relationship-goal">Relationship Goal:</label>
+                            <select id="relationship-goal" name="relationship-goal" required>
+                                <option value="">Select</option>
+                                <option value="casual">Casual dating</option>
+                                <option value="serious">Serious relationship</option>
+                                <option value="marriage">Looking for marriage</option>
+                                <option value="undecided">Undecided/Let it develop naturally</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Deal Breakers (Select all that apply):</label>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="deal-dishonesty" name="deal-breaker" value="dishonesty">
+                                <label for="deal-dishonesty">Dishonesty</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="deal-communication" name="deal-breaker" value="poor-communication">
+                                <label for="deal-communication">Poor communication</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="deal-life-goals" name="deal-breaker" value="different-life-goals">
+                                <label for="deal-life-goals">Different life goals</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="deal-respect" name="deal-breaker" value="lack-of-respect">
+                                <label for="deal-respect">Lack of respect</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="improvement">Self-improvement focus:</label>
+                            <textarea id="improvement" name="improvement" rows="4"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Emotional Needs (Select all that apply):</label>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="need-affection" name="emotional-need" value="affection">
+                                <label for="need-affection">Physical affection</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="need-support" name="emotional-need" value="support">
+                                <label for="need-support">Emotional support</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="need-communication" name="emotional-need" value="communication">
+                                <label for="need-communication">Open communication</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="need-independence" name="emotional-need" value="independence">
+                                <label for="need-independence">Independence/space</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="need-security" name="emotional-need" value="security">
+                                <label for="need-security">Security/stability</label>
+                            </div>
+                        </div>
+                        
+                        <div class="button-container">
+                            <button type="button" onclick="prevStep(4, 3)" class="button secondary">Back</button>
+                            <button type="button" onclick="submitForm()" class="button primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Results Section (Initially Hidden) -->
+                <div class="form-section hidden" id="results-section">
+                    <h2>Your Relationship Analysis</h2>
+                    
+                    <div class="result-card">
+                        <h3>Overall Compatibility</h3>
+                        <div class="score-container">
+                            <div class="score">78<span>%</span></div>
+                        </div>
+                        <div class="score-breakdown">
+                            <div class="score-item">
+                                <span>Emotional Match:</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="score-item">
+                                <span>Lifestyle Compatibility:</span>
+                                <span>82%</span>
+                            </div>
+                            <div class="score-item">
+                                <span>Relationship Stability:</span>
+                                <span>68%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="result-grid">
+                        <div class="result-card">
+                            <h3>Personality Analysis</h3>
+                            <p class="personality-type">Type: <span>INFJ</span></p>
+                            <ul class="trait-list">
+                                <li>Idealistic</li>
+                                <li>Sensitive</li>
+                                <li>Empathetic</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="result-card">
+                            <h3>Attachment Style</h3>
+                            <p class="attachment-style">Secure Attachment</p>
+                            <ul class="trait-list">
+                                <li>Trusting</li>
+                                <li>Stable</li>
+                                <li>Comfortable with intimacy</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="result-card">
+                        <h3>Relationship Insights</h3>
+                        <div class="insight-section">
+                            <h4>Key Compatibility Factors</h4>
+                            <ul class="insight-list">
+                                <li>Similar values</li>
+                                <li>Complementary communication styles</li>
+                                <li>Balanced lifestyle rhythms</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="insight-section">
+                            <h4>Potential Challenges</h4>
+                            <ul class="insight-list">
+                                <li>Different social preferences</li>
+                                <li>Navigating stress responses</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="insight-section">
+                            <h4>Growth Opportunities</h4>
+                            <ul class="insight-list">
+                                <li>Developing shared interests</li>
+                                <li>Building conflict resolution skills</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="result-card">
+                        <h3>Relationship Potential</h3>
+                        <div class="potential-scores">
+                            <div class="potential-item">
+                                <span>Long-term Potential:</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 85%;">85%</div>
+                                </div>
+                            </div>
+                            <div class="potential-item">
+                                <span>Short-term Match:</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 80%;">80%</div>
+                                </div>
+                            </div>
+                            <div class="potential-item">
+                                <span>Emotional Intimacy:</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 78%;">78%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="button-container">
+                        <a href="index.html" class="button">Back to Home</a>
+                        <button onclick="window.print()" class="button secondary">Print Results</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2023 AI Love Prediction</p>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
