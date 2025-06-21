@@ -48,6 +48,36 @@ footer {
     margin-top: auto;
 }
 
+.footer-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.disclaimer {
+    font-size: 0.9rem;
+    color: #cbd5e0;
+    margin: 1rem 0;
+    line-height: 1.4;
+}
+
+.footer-links {
+    margin-top: 1rem;
+}
+
+.footer-links a {
+    color: #a0aec0;
+    margin: 0 0.8rem;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #e2e8f0;
+    text-decoration: underline;
+}
+
 /* Card Styles */
 .card {
     background-color: white;
@@ -380,4 +410,21 @@ footer {
     .card {
         padding: 1.5rem;
     }
+}
+
+/* 添加备案号链接样式 */
+.icp-info {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+}
+
+.icp-info a {
+    color: #a0aec0;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.icp-info a:hover {
+    color: #e2e8f0;
+    text-decoration: underline;
 }
